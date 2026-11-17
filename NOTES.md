@@ -13,10 +13,12 @@ Bounty: "Forecast GTA VI's launch-day Twitch viewers hour by hour", $250 USDC, 2
 - Entrypoint: main.py 5,077 bytes (makefun compress of bot.py 13,796 bytes, sha256 fbcce47fe3d26b4b85fe1f5ab21ea2e24d6b959fde599af29823337ef4f5955d; main.py sha256 be7bc39fa9996cebfd621dd605eb9bf2ecfd6192edbf9e751b90a85c6f6c5b6e)
 - Model: per-hour log-ratio OLS fitted TWICE and blended — 0.8 × rolling-midnight-only fit (8 launches, unlock text says "rolling"/"midnight local") + 0.2 × full-set fit (19 launches, v1's set); quantiles = median + empirical quantiles of the POOLED residuals from both fits. Pure stdlib Python 3.12, deterministic, ~0.02 s per case.
 - Kit: ~/workspace/tools/makefun/gta6-twitch-ccu-forecast-01-kit/ (skill guide 1.5.199, same kit as v1)
-- Bundle: (to fill — transcripts of this session only, --muse-usage; usage row is attached by the top-level agent after this subagent finishes, as in v1)
+- Bundle: NOT YET MADE — transcripts of this session only, --muse-usage; usage row is attached by the top-level agent after this subagent finishes, as in v1. Session file: /home/hatch/agents/agent-665f01e8-0728-43eb-8fef-c1e96c64f60f/sessions/665f01e8-0728-43eb-8fef-c1e96c64f60f.jsonl (398,901 bytes at last check). Bundle dry-run confirmed it discovers this session and correctly leaves out the pre-opening cron sessions (thinking_in_window).
 
-## Kit check (to fill)
-- (to fill after `node cli/makefun.mjs check`)
+## Kit check (17 Nov ~16:12 WIB, repo only — no transcripts yet)
+- 4 passed, 1 failed, 13 skipped, 5 checked at submission. Passes: competition_open, snapshot (10 files, 46,794 bytes), license_osi (MIT), entrypoint (main.py, python3.13). FAIL: transcripts_present (no bundle yet — expected: the bundle is made by the top-level agent after this subagent finishes, when the usage rows are written).
+- Deferred to submission (all satisfied): repo_public (PUBLIC, created 2026-11-17T09:08:29Z, after opening 06:00Z), repo_owner (account GitHub login ci3hu1, as v1), repo_created_after_open, commit_in_repo (HEAD pushed), duplicate_snapshot.
+- To finish: parent runs the usage SELECT (agent_ids: top-level 9f4800e9-97b1-4ba0-8f2c-d0db918568d8 + this subagent 665f01e8-0728-43eb-8fef-c1e96c64f60f) -> ~/workspace/tools/makefun/gta6-v2-muse-usage.jsonl; then from inside the kit: `node cli/makefun.mjs bundle --repo ~/workspace/tools/makefun/gta6-twitch-ccu-forecast-01-v2 --no-discover --session /home/hatch/agents/agent-665f01e8-0728-43eb-8fef-c1e96c64f60f/sessions/665f01e8-0728-43eb-8fef-c1e96c64f60f.jsonl --muse-usage ~/workspace/tools/makefun/gta6-v2-muse-usage.jsonl --system-prompt <file> --effort <level> --out ~/workspace/tools/makefun/gta6-twitch-ccu-forecast-01-v2-transcripts.tar.gz` (same recipe as v1: single build session, --no-discover; do NOT let bundle discover the pre-opening cron sessions); then re-run `node cli/makefun.mjs check --repo <v2> --transcripts <bundle>` until 0 failures.
 
 ## Local validation (pinball loss, log scale — model vs v1 vs flat house baseline)
 - p00 Marvel's Wolverine: 0.1890 vs 0.2475 vs 0.7437
