@@ -9,8 +9,8 @@ Bounty: "Forecast GTA VI's launch-day Twitch viewers hour by hour", $250 USDC, 2
 
 ## v2 (built 17 Nov ~16:00 WIB, fresh subagent session after opening)
 - Repo: https://github.com/Ci3hu1/gta6-twitch-ccu-forecast-01-v2 (public, created after opening)
-- HEAD commit: (to fill after push)
-- Entrypoint: main.py (makefun compress of bot.py, sha256 to fill)
+- HEAD commit: f4c6af9dc7ae06398e07be03e75e21ac991d85c3 (pushed; 2 commits: 6d61291 build, f4c6af9 pack entrypoint)
+- Entrypoint: main.py 5,077 bytes (makefun compress of bot.py 13,796 bytes, sha256 fbcce47fe3d26b4b85fe1f5ab21ea2e24d6b959fde599af29823337ef4f5955d; main.py sha256 be7bc39fa9996cebfd621dd605eb9bf2ecfd6192edbf9e751b90a85c6f6c5b6e)
 - Model: per-hour log-ratio OLS fitted TWICE and blended — 0.8 × rolling-midnight-only fit (8 launches, unlock text says "rolling"/"midnight local") + 0.2 × full-set fit (19 launches, v1's set); quantiles = median + empirical quantiles of the POOLED residuals from both fits. Pure stdlib Python 3.12, deterministic, ~0.02 s per case.
 - Kit: ~/workspace/tools/makefun/gta6-twitch-ccu-forecast-01-kit/ (skill guide 1.5.199, same kit as v1)
 - Bundle: (to fill — transcripts of this session only, --muse-usage; usage row is attached by the top-level agent after this subagent finishes, as in v1)
